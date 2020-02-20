@@ -86,34 +86,22 @@
       <div class="help--slides active" data-id="1">
         <p>W naszej bazie znajdziesz listę zweryfikowanych Fundacji, z którymi współpracujemy. Możesz sprawdzić czym się zajmują, komu pomagają i czego potrzebują.</p>
 
+        {% if foundations %}
         <ul class="help--slides-items">
+          
+          {% for f in foundations%}
           <li>
             <div class="col">
-              <div class="title">Fundacja "Dbam o Zdrowie"</div>
-              <div class="subtitle">Cel i misja: Pomoc dzieciom z ubogich rodzin.</div>
+              <div class="title">{{ f.name }}</div>
+              <div class="subtitle">{{ f.description }}</div>
             </div>
 
-            <div class="col"><div class="text">ubrania, jedzenie, sprzęt AGD, meble, zabawki</div></div>
+            <div class="col"><div class="text">{{ f.get_categories_string }}</div></div>
           </li>
+          {% endfor %}
 
-          <li>
-            <div class="col">
-              <div class="title">Fundacja “Dla dzieci"</div>
-              <div class="subtitle">Cel i misja: Pomoc osobom znajdującym się w trudnej sytuacji życiowej.</div>
-            </div>
-
-            <div class="col"><div class="text">ubrania, meble, zabawki</div></div>
-          </li>
-
-          <li>
-            <div class="col">
-              <div class="title">Fundacja “Bez domu”</div>
-              <div class="subtitle">Cel i misja: Pomoc dla osób nie posiadających miejsca zamieszkania</div>
-            </div>
-
-            <div class="col"><div class="text">ubrania, jedzenie, ciepłe koce</div></div>
-          </li>
         </ul>
+        {% endif %}
         <!-- Pagination
         <ul class="help--slides-pagination">
           <li><a href="#" class="btn btn--small btn--without-border active" data-page="1">1</a></li>

@@ -11,6 +11,7 @@ ipython = "*"
 [packages]
 django = "*"
 psycopg2-binary = "*"
+selenium = "*"
 
 [requires]
 python_version = "3.6"

@@ -7,9 +7,9 @@ FAKE = Faker('pl_PL')
 
 
 def prepare():
+    Donation.objects.all().delete()
     Category.objects.all().delete()
     Institution.objects.all().delete()
-    Donation.objects.all().delete()
 
 
 def populate_categories():
@@ -49,7 +49,16 @@ def populate_donations():
         new.categories.set(selected_cats)
 
 
-prepare()
-populate_categories()
-populate_institutions()
-populate_donations()
+def run_all():
+    prepare()
+    populate_categories()
+    populate_institutions()
+    populate_donations()
+
+
+
+if __name__ == '__main__':
+    prepare()
+    populate_categories()
+    populate_institutions()
+    populate_donations()

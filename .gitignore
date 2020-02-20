@@ -1,1 +1,8 @@
+
+# tests
+geckodriver.log
+
+# envs, project, pyc etc.
 .vscode/
+__pycache__/
+

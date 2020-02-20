@@ -7,12 +7,16 @@ from .models import Category, Institution, Donation
 class LandingPage(View):
 
     def get(self, request):
-        # distinct(*field) works only with postgres
-        institutions_count = Donation.objects.distinct('institution').count()
-        donated_pieces = Donation.objects.aggregate(Sum('quantity'))['quantity__sum']
+        
+        institutions_count = Donation.objects.values(
+                             'institution').distinct().count()
+        donated_pieces = Donation.objects.aggregate(
+                         Sum('quantity'))['quantity__sum']
         ctx = {}
         ctx['institutions_count'] = institutions_count
         ctx['donated_pieces'] = donated_pieces
+        ctx['foundations'] = Institution.objects.filter(kind=0)
+
         return render(request, 'index.html', ctx)
 
 

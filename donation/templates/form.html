@@ -61,55 +61,22 @@
           <div data-step="1" class="active">
             <h3>Zaznacz co chcesz oddać:</h3>
 
-            <div class="form-group form-group--checkbox">
-              <label>
-                <input
-                  type="checkbox"
-                  name="categories"
-                  value="clothes-to-use"
-                />
-                <span class="checkbox"></span>
-                <span class="description"
-                  >ubrania, które nadają się do ponownego użycia</span
-                >
-              </label>
-            </div>
-
-            <div class="form-group form-group--checkbox">
-              <label>
-                <input
-                  type="checkbox"
-                  name="categories"
-                  value="clothes-useless"
-                />
-                <span class="checkbox"></span>
-                <span class="description">ubrania, do wyrzucenia</span>
-              </label>
-            </div>
-
-            <div class="form-group form-group--checkbox">
-              <label>
-                <input type="checkbox" name="categories" value="toys" />
-                <span class="checkbox"></span>
-                <span class="description">zabawki</span>
-              </label>
-            </div>
-
-            <div class="form-group form-group--checkbox">
-              <label>
-                <input type="checkbox" name="categories" value="books" />
-                <span class="checkbox"></span>
-                <span class="description">książki</span>
-              </label>
-            </div>
-
-            <div class="form-group form-group--checkbox">
-              <label>
-                <input type="checkbox" name="categories" value="other" />
-                <span class="checkbox"></span>
-                <span class="description">inne</span>
-              </label>
-            </div>
+            {% for c in categories%}
+              <div class="form-group form-group--checkbox">
+                <label>
+                  <input
+                    type="checkbox"
+                    name="categories"
+                    value="{{ c.pk }}"
+                    autocomplete="off"
+                  />
+                  <span class="checkbox"></span>
+                  <span class="description"
+                    >{{ c.name }}</span
+                  >
+                </label>
+              </div>
+            {% endfor %}
 
             <div class="form-group form-group--buttons">
               <button type="button" class="btn next-step">Dalej</button>
@@ -139,32 +106,24 @@
           <div data-step="3">
             <h3>Wybierz organizacje, której chcesz pomóc:</h3>
 
-            <div class="form-group form-group--checkbox">
-              <label>
-                <input type="radio" name="organization" value="old" />
-                <span class="checkbox radio"></span>
-                <span class="description">
-                  <div class="title">Fundacja “Bez domu”</div>
-                  <div class="subtitle">
-                    Cel i misja: Pomoc dla osób nie posiadających miejsca
-                    zamieszkania
-                  </div>
-                </span>
-              </label>
-            </div>
+            {{ institutions|json_script:"allInstitutions"}}
+            
+            <div class="organizations-container">
+            {% for i in institutions %}
 
             <div class="form-group form-group--checkbox">
-              <label>
-                <input type="radio" name="organization" value="old" />
-                <span class="checkbox radio"></span>
-                <span class="description">
-                  <div class="title">Fundacja “Dla dzieci"</div>
-                  <div class="subtitle">
-                    Cel i misja: Pomoc osobom znajdującym się w trudnej sytuacji
-                    życiowej.
-                  </div>
-                </span>
-              </label>
+                <label>
+                  <input type="radio" name="{{ i.name }}" value="{{ i.pk }}" />
+                  <span class="checkbox radio"></span>
+                  <span class="description">
+                    <div class="title">{{ i.name }}</div>
+                    <div class="subtitle">
+                      {{ i.description|truncatewords:7 }}
+                    </div>
+                  </span>
+                </label>
+              </div><br><br>
+            {% endfor %}
             </div>
 
             <div class="form-group form-group--buttons">

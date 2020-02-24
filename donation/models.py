@@ -25,6 +25,9 @@ class Institution(models.Model):
     def get_categories_string(self):
         return ", ".join(list(self.categories.values_list('name', flat=True)))
 
+    def get_categories_list(self):
+        return list(self.categories.values_list('pk', flat=True))
+
 
 class Donation(models.Model):
     quantity = models.PositiveSmallIntegerField()

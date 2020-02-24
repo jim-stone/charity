@@ -252,4 +252,54 @@ document.addEventListener("DOMContentLoaded", function() {
   if (form !== null) {
     new FormSteps(form);
   }
+
+
+
+  const institutions = JSON.parse(document.querySelector("#allInstitutions").innerText);
+  let categoriesCheckbox = document.getElementsByName("categories");
+
+  console.log(institutions);
+  console.log(categoriesCheckbox);
+
+  let categoriesChosen = [];
+
+  // let categoriesChecked = document.getElementsByName("input[name=categories]:checked");
+  for (let i=0; i < categoriesCheckbox.length; i++) {
+    categoriesCheckbox[i].addEventListener("change", (event) => {
+      
+      if (event.target.checked) {
+        categoriesChosen.push (parseInt(event.target.value));
+      } else {
+        categoriesChosen = categoriesChosen.filter( (value) => {
+          return value != parseInt (event.target.value)
+        })
+      }
+
+      console.log(categoriesChosen);
+    
+     let targetPlaceInDom = document.getElementsByClassName('organizations-container'); 
+
+     institutions.forEach(inst => {
+        
+        let condition = categoriesChosen.every(cat=>inst.categories.includes(cat));
+
+        if (!condition) {
+          let nodeToHide = document.getElementsByName(inst.name);
+          console.log(nodeToHide);
+
+        }
+        
+
+
+     })
+
+  })};
+
+
+  
+
+
+
+
 });
+

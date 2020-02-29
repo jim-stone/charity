@@ -56,7 +56,6 @@ def run_all():
     populate_donations()
 
 
-
 if __name__ == '__main__':
     prepare()
     populate_categories()

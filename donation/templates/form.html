@@ -132,7 +132,9 @@
 
             <div class="form-group form-group--checkbox">
                 <label>
-                  <input type="radio" name="institution" value="{{ i.id }}" />
+                  <input type="radio" name="institution" value="{{ i.id }}" 
+                        data-categories="{{ i.categories }}" class="institution"
+                  />
                   <span class="checkbox radio"></span>
                   <span class="description">
                     <div class="title">{{ i.name }}</div>
@@ -199,7 +201,7 @@
             </div>
             <div class="form-group form-group--buttons">
               <button type="button" class="btn prev-step">Wstecz</button>
-              <button type="button" class="btn next-step">Dalej</button>
+              <button type="button" id="summary-button" class="btn next-step">Dalej</button>
             </div>
           </div>
 
@@ -213,16 +215,12 @@
                 <ul>
                   <li>
                     <span class="icon icon-bag"></span>
-                    <span class="summary--text"
-                      >worków: </span
-                    >
+                    <span class="summary--text">worków: <span id='quantity-target'></span></span>
                   </li>
 
                   <li>
                     <span class="icon icon-hand"></span>
-                    <span class="summary--text"
-                      >dla: </span
-                    >
+                    <span class="summary--text">dla: <span id='institution-target'></span>
                   </li>
                 </ul>
               </div>
@@ -231,19 +229,19 @@
                 <div class="form-section--column">
                   <h4>Adres odbioru:</h4>
                   <ul>
-                    <li>Prosta 51</li>
-                    <li>Warszawa</li>
-                    <li>99-098</li>
-                    <li>123 456 789</li>
+                    <li><span id='address-target'></span></li>
+                    <li><span id='city-target'></span></li>
+                    <li><span id='zip_code-target'></span></li>
+                    <li><span id='phone_number-target'></span></li>
                   </ul>
                 </div>
 
                 <div class="form-section--column">
                   <h4>Termin odbioru:</h4>
                   <ul>
-                    <li>13/12/2018</li>
-                    <li>15:40</li>
-                    <li>Brak uwag</li>
+                    <li><span id='pick_up_date-target'></span></li>
+                    <li><span id='pick_up_time-target'></span></li>
+                    <li><span id='pick_up_comment-target'></span></li>
                   </ul>
                 </div>
               </div>

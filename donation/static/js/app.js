@@ -253,52 +253,76 @@ document.addEventListener("DOMContentLoaded", function() {
     new FormSteps(form);
   }
 
+// początek kodu własnego JK
 
 
-  const institutions = JSON.parse(document.querySelector("#allInstitutions").innerText);
+// filtrowanie listy organizacji
+
+  
   let categoriesCheckbox = document.getElementsByName("categories");
+  // let institutions = document.getElementsByName("institution");
+  // console.log(institutions);
+  // console.log(categoriesCheckbox);
 
-  console.log(institutions);
-  console.log(categoriesCheckbox);
-
-  let categoriesChosen = [];
-
-  // let categoriesChecked = document.getElementsByName("input[name=categories]:checked");
   for (let i=0; i < categoriesCheckbox.length; i++) {
     categoriesCheckbox[i].addEventListener("change", (event) => {
-      
+
       if (event.target.checked) {
-        categoriesChosen.push (parseInt(event.target.value));
+        let cat = event.target.value;
+        $(`.institution:not(input[data-categories*=${cat}])`)
+          .parent().parent().hide();
       } else {
-        categoriesChosen = categoriesChosen.filter( (value) => {
-          return value != parseInt (event.target.value)
-        })
+        let cat = event.target.value;
+        $(`.institution:not(input[data-categories*=${cat}])`)
+          .parent().parent().show();        
       }
-
-      console.log(categoriesChosen);
-    
-     let targetPlaceInDom = document.getElementsByClassName('organizations-container'); 
-
-     institutions.forEach(inst => {
-        
-        let condition = categoriesChosen.every(cat=>inst.categories.includes(cat));
-
-        if (!condition) {
-          let nodeToHide = document.getElementsByName(inst.name);
-          console.log(nodeToHide);
-
-        }
-        
-
-
-     })
 
   })};
 
+// podsumowanie formularza
 
+  let summaryButton = document.getElementById('summary-button');
+  summaryButton.addEventListener("click", event => {
+    
+    const quantity = document.getElementsByName('quantity')[0].value;
+    const quantityTarget = document.getElementById('quantity-target');
+    quantityTarget.innerText = quantity;
+
+    const institution = document.querySelector('input[name="institution"]:checked')
+      .nextElementSibling.nextElementSibling.firstElementChild.innerText
+    const institutionTarget = document.getElementById('institution-target');
+    institutionTarget.innerText = institution;
+    
+    const address = document.getElementsByName('address')[0].value;
+    const addressTarget = document.getElementById('address-target');
+    addressTarget.innerText = address;
+    
+    const city = document.getElementsByName('city')[0].value;
+    const cityTarget = document.getElementById('city-target');
+    cityTarget.innerText = city;
+    
+    const zipcode = document.getElementsByName('zip_code')[0].value;
+    const zipcodeTarget = document.getElementById('zip_code-target');
+    zipcodeTarget.innerText = zipcode;
+    
+    const phonenumber = document.getElementsByName('phone_number')[0].value;
+    const phonenumberTarget = document.getElementById('phone_number-target');
+    phonenumberTarget.innerText = phonenumber;
+
+    const date = document.getElementsByName('pick_up_date')[0].value;
+    const dateTarget = document.getElementById('pick_up_date-target');
+    dateTarget.innerText = date;
+
+    const time = document.getElementsByName('pick_up_time')[0].value;
+    const timeTarget = document.getElementById('pick_up_time-target');
+    timeTarget.innerText = time;
+
+    const comment = document.getElementsByName('pick_up_comment')[0].value;
+    const commentTarget = document.getElementById('pick_up_comment-target');
+    commentTarget.innerText = comment;
+
+  })
   
-
-
 
 
 });

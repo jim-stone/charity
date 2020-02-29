@@ -28,6 +28,9 @@ class Institution(models.Model):
     def get_categories_list(self):
         return list(self.categories.values_list('pk', flat=True))
 
+    def __str__(self):
+        return self.name
+
 
 class Donation(models.Model):
     quantity = models.PositiveSmallIntegerField()
@@ -43,3 +46,6 @@ class Donation(models.Model):
     pick_up_comment = models.CharField(max_length=500)
     user = models.ForeignKey(to=User, related_name='donations', null=True,
                              default=None, on_delete=models.CASCADE)
+
+    def get_categories_string(self):
+        return ", ".join(list(self.categories.values_list('name', flat=True)))

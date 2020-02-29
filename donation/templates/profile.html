@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block messages %}
+
+    <div class="slogan container container--90 center">
+        <h2>Profil użytkownika
+            <br><br>
+            <table>
+            <tr>
+                <td>Imię: </td><td>{{ user.first_name }}</td>
+            </tr>
+            <tr>
+                <td>Nazwisko: </td><td>{{ user.last_name }}</td>
+            </tr>
+            <tr>
+                <td>Email: </td><td>{{ user.email }}</td>
+            </tr>
+        </table>
+        </h2>
+    </div>
+
+{% endblock %}

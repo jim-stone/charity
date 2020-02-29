@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block messages %}
+
+    <div class="slogan container container--90 center">
+        <h2><div style="color: goldenrod;">Moje zbiórki</div>
+            <br>
+            <table style="font-size: large;">
+            <thead style="font-size: larger; color: goldenrod;">
+                <tr>
+                    <td>Komu</td>
+                    <td>Ile</td>
+                    <td>Co</td>
+                    <td>Kiedy</td>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for d in donations %}   
+                    <tr>
+                        <td>{{ d.institution }}</td>
+                        <td>{{ d.quantity }}</td>
+                        <td>{{ d.get_categories_string }}</td>
+                        <td>{{ d.pick_up_date }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+            </table>
+            </h2>
+        
+    </div>
+
+{% endblock %}

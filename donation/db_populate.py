@@ -57,7 +57,4 @@ def run_all():
 
 
 if __name__ == '__main__':
-    prepare()
-    populate_categories()
-    populate_institutions()
-    populate_donations()
+    run_all()

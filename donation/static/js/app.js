@@ -258,12 +258,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 // filtrowanie listy organizacji
 
-  
   let categoriesCheckbox = document.getElementsByName("categories");
-  // let institutions = document.getElementsByName("institution");
-  // console.log(institutions);
-  // console.log(categoriesCheckbox);
-
   for (let i=0; i < categoriesCheckbox.length; i++) {
     categoriesCheckbox[i].addEventListener("change", (event) => {
 

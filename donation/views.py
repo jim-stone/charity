@@ -39,17 +39,11 @@ class AddDonation(LoginRequiredMixin, CreateView):
         for inst in institutions:
             inst_dict = model_to_dict(inst)
             inst_dict['categories'] = inst.get_categories_list()
-            # print(inst_dict)
             institutions_list.append(inst_dict)
         kwargs['categories'] = categories
         kwargs['institutions'] = institutions_list
         print(institutions_list[0])
         return super().get_context_data(**kwargs)
-
-    def form_invalid(self, form):
-        print('invalid')
-        print('Errors: ', form.errors)
-        return super().form_invalid(form)
 
     def form_valid(self, form):
         donation = form.save(commit=False)
@@ -80,7 +74,7 @@ class Login(View):
                 login(request, user)
                 return redirect('index')
             except Exception:
-                print(Exception)
+                pass
         else:
             return redirect('register')
 

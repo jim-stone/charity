@@ -26,7 +26,7 @@ class LandingPageTest(StaticLiveServerTestCase):
         populate_institutions()
         Donation.objects.create(
             quantity=7,
-            institution=Institution.objects.get(pk=1),
+            institution=Institution.objects.get(pk=10),
             address=FAKE.street_address(),
             city=FAKE.city(),
             zip_code=FAKE.postcode(),
@@ -36,7 +36,7 @@ class LandingPageTest(StaticLiveServerTestCase):
         )
         Donation.objects.create(
             quantity=7,
-            institution=Institution.objects.get(pk=2),
+            institution=Institution.objects.get(pk=12),
             address=FAKE.street_address(),
             city=FAKE.city(),
             zip_code=FAKE.postcode(),
@@ -46,7 +46,7 @@ class LandingPageTest(StaticLiveServerTestCase):
         )
         Donation.objects.create(
             quantity=6,
-            institution=Institution.objects.get(pk=1),
+            institution=Institution.objects.get(pk=12),
             address=FAKE.street_address(),
             city=FAKE.city(),
             zip_code=FAKE.postcode(),

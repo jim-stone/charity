@@ -1,6 +1,7 @@
 
 # tests
 geckodriver.log
+.coverage
 
 # envs, project, pyc etc.
 .vscode/

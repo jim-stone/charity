@@ -42,7 +42,6 @@ class AddDonation(LoginRequiredMixin, CreateView):
             institutions_list.append(inst_dict)
         kwargs['categories'] = categories
         kwargs['institutions'] = institutions_list
-        print(institutions_list[0])
         return super().get_context_data(**kwargs)
 
     def form_valid(self, form):

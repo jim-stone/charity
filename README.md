@@ -13,9 +13,8 @@ Python/Django (szczegóły w plikach Pipfile), HTML, CSS, JavScript/jQuery
 
 ### Instalacja
 
-Sklonuj repozytorium projektu. Następnie:
+Sklonuj repozytorium projektu. Wejdź do środka a następnie:
 ```
-cd charity
 pipenv install
 ```
 

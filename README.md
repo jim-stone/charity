@@ -9,7 +9,7 @@ Zdecydowaną większość frontendu dostarczono w ramach kursu.
 
 ### Technologie
 
-Python/Django (szczegóły w plikach Pipfile), HTML, CSS, JavScript/jQuery
+Python/Django (szczegóły w plikach Pipfile), HTML, CSS, JavaScript/jQuery.
 
 ### Instalacja
 

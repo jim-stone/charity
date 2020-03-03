@@ -11,6 +11,14 @@ Zdecydowaną większość frontendu dostarczono w ramach kursu.
 
 Python/Django (szczegóły w plikach Pipfile), HTML, CSS, JavScript/jQuery
 
+### Instalacja
+
+Sklonuj repozytorium projektu. Następnie:
+```
+cd charity
+pipenv install
+```
+
 ### Licencja
 
 Najbezpieczniejszym sposobem traktowania kodu, dla którego nie została określona licencja, jest traktowanie go jako własnościowy.
